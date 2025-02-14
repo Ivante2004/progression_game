@@ -1,0 +1,27 @@
+{
+    "name": "ivante2004/progression",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ivante2004\\Progression\\": "src/"
+        },
+        "files": [
+            "src/Controller.php",
+            "src/View.php"
+        ]
+    },
+    "bin": [
+        "bin/progression"
+    ],
+
+    "authors": [
+        {
+            "name": "ivante2004",
+            "email": "tsybisov2004@mail.ru"
+        }
+    ],
+    "require": {
+        "wp-cli/php-cli-tools": "^0.12.1"
+    }
+}

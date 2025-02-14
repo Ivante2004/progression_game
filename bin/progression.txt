@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Ivante2004\Progression\Controller;
+use Ivante2004\Progression\View;
+
+$view = new View();
+$controller = new Controller($view);
+
+$controller->startGame();
