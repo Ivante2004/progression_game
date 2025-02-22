@@ -5,11 +5,7 @@
     "autoload": {
         "psr-4": {
             "Ivante2004\\Progression\\": "src/"
-        },
-        "files": [
-            "src/Controller.php",
-            "src/View.php"
-        ]
+        }
     },
     "bin": [
         "bin/progression"

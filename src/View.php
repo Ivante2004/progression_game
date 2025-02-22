@@ -2,43 +2,82 @@
 
 namespace Ivante2004\Progression;
 
-use cli;
-
 class View
 {
-    public function __construct()
+    public function renderStartScreen(): void
     {
-        cli\Colors::enable();
+        echo '
+            <h1 class="title">Добро пожаловать в игру "Арифметическая прогрессия"!</h1>
+            <form method="POST" class="form">
+                <label for="player_name" class="label">Введите ваше имя:</label>
+                <input type="text" id="player_name" name="player_name" class="input" required>
+                <button type="submit" class="button">Начать игру</button>
+            </form>
+             <a href="/index.php?action=history"  class="button"><button>Просмотреть историю игр</button></a>
+        ';
     }
 
-    public function startScreen(): void
-    {
-        cli\line("%G=============================================================%n");
-        cli\line("%Y    Добро пожаловать в игру \"Арифметическая прогрессия\"!   %n");
-        cli\line("%G=============================================================%n");
-        cli\line("%C                       Начинаем...                           %n");
-        cli\line("%G=============================================================%n");
-    }
-
-    public function showProgression(array $progression, int $hiddenIndex): void
+    public function renderGameScreen(array $progression, int $hiddenIndex): void
     {
         $displayedProgression = $progression;
         $displayedProgression[$hiddenIndex] = "..";
-        cli\line("%C" . implode(" ", $displayedProgression) . "%n");
+        $progressionString = implode(" ", $displayedProgression);
+
+        echo '
+            <h1 class="title">Арифметическая прогрессия</h1>
+            <p class="progression">Прогрессия: ' . $progressionString . '</p>
+            <form method="POST" class="form">
+                <label for="user_answer" class="label">Введите пропущенное число:</label>
+                <input type="number" id="user_answer" name="user_answer" class="input" required>
+                <button type="submit" class="button">Проверить</button>
+            </form>
+        ';
     }
 
-    public function promptUser(): string
+    public function renderResult(bool $isCorrect, array $progression, int $correctAnswer): void
     {
-        return cli\prompt("Введите пропущенное число");
-    }
+        $progressionString = implode(" ", $progression);
 
-    public function showResult(bool $isCorrect, array $progression, int $correctAnswer): void
-    {
+        echo '
+            <h1 class="title">Результат</h1>';
         if ($isCorrect) {
-            cli\line("%GВерно!%n");
+            echo '<p class="result success">Верно! Правильный ответ: ' . $correctAnswer . '</p>';
         } else {
-            cli\line("%RОшибка! Правильный ответ: %Y{$correctAnswer}%n");
-            cli\line("%CВся прогрессия: " . implode(" ", $progression) . "%n");
+            echo '<p class="result error">Ошибка! Правильный ответ: ' . $correctAnswer . '</p>';
         }
+        echo '
+            <p class="progression">Вся прогрессия: ' . $progressionString . '</p>
+            <form method="POST" action="/" class="form">
+                <button type="submit" class="button">Следующий раунд</button>
+            </form>
+        ';
+    }
+
+    public function renderGameHistory(array $games): void
+    {
+        echo '
+            <h1 class="title">История игр</h1>
+            <table class="table">
+                <tr>
+                    <th>Игрок</th>
+                    <th>Дата</th>
+                    <th>Результат</th>
+                    <th>Прогрессия</th>
+                    <th>Пропущенное число</th>
+                </tr>';
+        foreach ($games as $game) {
+            echo '
+                <tr>
+                    <td>' . htmlspecialchars($game['player_name']) . '</td>
+                    <td>' . htmlspecialchars($game['game_date']) . '</td>
+                    <td>' . htmlspecialchars($game['result']) . '</td>
+                    <td>' . htmlspecialchars($game['progression']) . '</td>
+                    <td>' . htmlspecialchars($game['missed_number']) . '</td>
+                </tr>';
+        }
+        echo '
+            </table>
+            <a href="/" class="button">Начать новую игру</a>
+        ';
     }
 }
