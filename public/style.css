@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+li {
+    padding: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+input {
+    padding: 12px;
+    margin-right: 10px;
+    width: calc(100% - 22px);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.progression {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    word-wrap: break-word;
+}
+
+#game-status {
+    display: none;
+}
+
+#game-result {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    button, input {
+        font-size: 0.9rem;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+table td {
+    background-color: #fff;
+}
